@@ -2019,6 +2019,45 @@
   content: ""; }
 
 body {
-  background: #e2ebf3; }
+  background: #e2ebf3;
+  font-family: "Lato"; }
+  body .spinner {
+    position: absolute;
+    right: 280px;
+    top: 40px;
+    color: #FF6600; }
+  body .banklogo {
+    margin-left: 17%; }
+  body .warning {
+    text-align: center;
+    color: #0053FF; }
+  body li {
+    list-style: none; }
+  body .info {
+    padding: 10px;
+    border: 2px solid #FF6600;
+    border-radius: 3px;
+    margin-right: 3%;
+    margin-bottom: 5px; }
+  body .name {
+    font-weight: bold; }
+  body .acctNumber {
+    color: #FF6600; }
+  body .current {
+    display: inline; }
+  body .currentBal {
+    color: #0053FF; }
+  body button {
+    color: #fff;
+    display: inline;
+    padding: 10px;
+    margin-left: 750px;
+    border: 1px solid #FF6600;
+    border-radius: 4px;
+    background: #FF6600; }
+  body button:hover {
+    background: #fff;
+    color: #0053FF;
+    border: 1px solid #fff; }
 
 /*# sourceMappingURL=main.css.map */

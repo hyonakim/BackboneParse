@@ -20,9 +20,14 @@ let customers = new BankCustomers();
 function renderCustomers() {
 	let $ul = $('<ul></ul>');
 
+
 	customers.each(function(person){
 		let data = person.toJSON();
-		console.log('data', data);
+		let balance = _.random(0, 1000000000)
+		data.balance = balance;
+		person.set({'Balance': balance});
+		person.save();
+		console.log('data', balance);
 
 		let templateStr = CustomerTemplate(data);
 		console.log('template', templateStr);
@@ -33,7 +38,16 @@ function renderCustomers() {
 
 	});
 
-		$('body').html($ul);
+		$('body').append($ul);
+
+		$('button').click( function () {
+		alert ('Transfering balance to Master Account of Hyona Kim, Have a Great Day');
+	});
 }
 
 customers.fetch().then(renderCustomers);
+
+
+$('button').click( function () {
+	alert ('Transfering balance to Master Account of Hyona Kim, Have a Great Day');
+});

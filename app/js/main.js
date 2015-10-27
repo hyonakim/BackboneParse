@@ -62,7 +62,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 function CustomerTemplate(data) {
-	return "\n\t\t<li>Account # belonging to " + data.FirstName + data.LastName + " is " + data.AccountNumber + "</li>\n\t\t";
+	return "\n\t\t<div class='info'\n\t\t<li>Account # belonging to <span class='name'>" + data.FirstName + " " + data.LastName + "</span> <span class='acctNumber'>" + data.AccountNumber + "</span></li>\n\t\t<p> Last Transaction | " + data.LastTransaction.iso + "</p>\n\t\t<p class='current'>Current Balance: <span class='currentBal'>$" + data.Balance + "</span></p>\n\t\t<button id='transferbtn'>Transfer Balance</button>\n\t\t</div>\n\t\t";
 }
 
 exports["default"] = CustomerTemplate;
@@ -110,7 +110,11 @@ function renderCustomers() {
 
 	customers.each(function (person) {
 		var data = person.toJSON();
-		console.log('data', data);
+		var balance = _underscore2['default'].random(0, 1000000000);
+		data.balance = balance;
+		person.set({ 'Balance': balance });
+		person.save();
+		console.log('data', balance);
 
 		var templateStr = (0, _customer_template2['default'])(data);
 		console.log('template', templateStr);
@@ -120,10 +124,18 @@ function renderCustomers() {
 		$ul.append($li);
 	});
 
-	(0, _jquery2['default'])('body').html($ul);
+	(0, _jquery2['default'])('body').append($ul);
+
+	(0, _jquery2['default'])('button').click(function () {
+		alert('Transfering balance to Master Account of Hyona Kim, Have a Great Day');
+	});
 }
 
 customers.fetch().then(renderCustomers);
+
+(0, _jquery2['default'])('button').click(function () {
+	alert('Transfering balance to Master Account of Hyona Kim, Have a Great Day');
+});
 
 },{"./bankcustomers":1,"./customer_template":3,"jquery":6,"moment":7,"underscore":8}],5:[function(require,module,exports){
 (function (global){
